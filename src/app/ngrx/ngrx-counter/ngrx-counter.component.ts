@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {select, Store} from '@ngrx/store';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-ngrx-counter',
@@ -7,11 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NgrxCounterComponent implements OnInit {
 
-  waves: number = 0;
+  waves$: Observable<number>;
 
-  constructor() { }
+  constructor(private store: Store<{ waves: number }>) { }
 
   ngOnInit() {
+    this.waves$ = this.store.pipe(select('waves'));
   }
 
 }

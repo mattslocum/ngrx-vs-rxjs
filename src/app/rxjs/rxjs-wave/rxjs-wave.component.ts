@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {WaveService} from '../service/wave.service';
 
 @Component({
   selector: 'app-rxjs-wave',
@@ -7,11 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RxjsWaveComponent implements OnInit {
 
-  constructor() { }
+  constructor(private waveSerice: WaveService) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  wave() {
+    this.waveSerice.wave();
   }
-
-  wave() {}
 
 }

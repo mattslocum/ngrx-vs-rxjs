@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from 'rxjs';
+import {WaveService} from '../service/wave.service';
 
 @Component({
   selector: 'app-rxjs-counter',
@@ -7,11 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RxjsCounterComponent implements OnInit {
 
-  waves: number = 0;
+  waves$: Observable<number>;
 
-  constructor() { }
+  constructor(private waveService: WaveService) { }
 
   ngOnInit() {
+    this.waves$ = this.waveService.subscribe();
   }
 
 }

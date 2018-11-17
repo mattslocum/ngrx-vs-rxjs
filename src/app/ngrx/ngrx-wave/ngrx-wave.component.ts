@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Store} from '@ngrx/store';
+import {Wave} from '../store/actions';
 
 @Component({
   selector: 'app-ngrx-wave',
@@ -7,10 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NgrxWaveComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<{ waves: number }>) { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  wave() {
+    this.store.dispatch(new Wave());
   }
-
-  wave() {}
 }
